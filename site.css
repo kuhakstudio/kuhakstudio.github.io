@@ -1,0 +1,47 @@
+/* Kuhak Studio: dark night, cream text, the emblem's ember-red. System fonts only (no
+   outside requests: the privacy page itself collects nothing). */
+:root {
+  --bg: #0b0e0e;
+  --panel: #131817;
+  --text: #e8dcc4;
+  --dim: #a99f8b;
+  --ember: #e2552b;
+  --line: #2a302e;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 17px/1.65 Georgia, "Noto Serif", "Noto Serif Bengali", "Noto Sans Bengali", serif;
+}
+a { color: var(--ember); }
+.wrap { max-width: 760px; margin: 0 auto; padding: 0 16px; }
+header.hero {
+  background: var(--bg) url("img/banner.jpg") center / cover no-repeat;
+  min-height: 52vh;
+  display: flex;
+  align-items: flex-end;
+}
+header.hero .wrap { padding-bottom: 24px; }
+.tag { color: var(--dim); letter-spacing: 0.04em; margin: 0; }
+h1, h2, h3 { font-weight: normal; letter-spacing: 0.03em; line-height: 1.25; }
+h1 { font-size: 2.1rem; margin: 0 0 6px; }
+h2 { font-size: 1.4rem; margin: 40px 0 10px; border-bottom: 1px solid var(--line); padding-bottom: 6px; }
+h3 { font-size: 1.1rem; margin: 26px 0 6px; color: var(--ember); }
+.game { display: flex; gap: 18px; align-items: center; background: var(--panel); border: 1px solid var(--line);
+        border-radius: 10px; padding: 16px; margin: 18px 0; }
+.game img { width: 96px; height: 96px; border-radius: 18px; flex: none; }
+.game p { margin: 4px 0; }
+.small { font-size: 0.9rem; color: var(--dim); }
+.emblem { display: block; width: 160px; height: 160px; margin: 28px auto 4px; }
+footer { border-top: 1px solid var(--line); margin-top: 48px; padding: 20px 0 40px; color: var(--dim); font-size: 0.9rem; }
+nav.lang { margin: 18px 0; }
+nav.lang a { margin-right: 14px; }
+ul { padding-left: 1.2em; }
+li { margin: 4px 0; }
+@media (max-width: 520px) {
+  body { font-size: 16px; }
+  h1 { font-size: 1.7rem; }
+  .game { flex-direction: column; text-align: center; }
+}
