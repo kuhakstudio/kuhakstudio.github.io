@@ -4,8 +4,8 @@ The Kuhak Studio website: the studio homepage, each game's privacy policy, and
 `app-ads.txt` for AdMob. Plain HTML + one CSS file, no build step, no outside requests.
 
 ## Before publishing
-1. Replace `CONTACT_EMAIL` everywhere (index.html, shakchunnir-badhon/privacy.html) with the
-   contact email that is also given in Play Console.
+1. Contact email: kuhakstudio@gmail.com (also the developer email in Play Console; it was the
+   CONTACT_EMAIL placeholder until 2026-10-30).
 2. After the AdMob account exists, add `app-ads.txt` at the root with the line AdMob shows
    (format: `google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0`).
 
