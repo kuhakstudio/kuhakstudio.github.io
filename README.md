@@ -10,9 +10,11 @@ The Kuhak Studio website: the studio homepage, each game's privacy policy, and
    (format: `google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0`).
 
 ## Publishing (free, GitHub Pages)
-1. On GitHub create an organization `kuhakstudio` (free plan).
-2. In it create a **public** repository named exactly `kuhakstudio.github.io`.
-3. Push this folder to it (branch `main`); Settings > Pages > deploy from branch `main`, root.
+1. The GitHub account `kuhakstudio` (a user account, made 2026-10-30) owns the **public**
+   repository `kuhakstudio.github.io`; a repo with that name is published automatically.
+2. Push from this folder: `git push` (remote `git@github-kuhak:kuhakstudio/kuhakstudio.github.io.git`,
+   key `~/.ssh/id_kuhakstudio`); commits as "Kuhak Studio" with the GitHub no-reply address.
+3. Live a minute or two after each push.
 4. The site is then at https://kuhakstudio.github.io/ and the policy at
    https://kuhakstudio.github.io/shakchunnir-badhon/privacy.html (the URL the game opens:
    `PRIVACY_URL` in bhoot-runner/ui/run_hud.gd). Put the same URL in Play Console.
