@@ -182,3 +182,34 @@ footer a:hover { color: var(--text); }
   .shots figure { flex: 0 0 62%; scroll-snap-align: start; }
 }
 .doc section { padding: 0; }
+
+/* ---- section gradients: the night sky, a moon glow, an ember glow, the ghost-light ---- */
+.g-moon {
+  background:
+    radial-gradient(ellipse 60% 70% at 88% 12%, rgba(242, 217, 166, 0.17), transparent 70%),
+    linear-gradient(180deg, #0a0d0d 0%, #0e171a 100%);
+}
+.g-ember {
+  background:
+    radial-gradient(ellipse 55% 80% at 8% 100%, rgba(226, 85, 43, 0.26), transparent 70%),
+    radial-gradient(ellipse 50% 60% at 95% 0%, rgba(143, 242, 110, 0.10), transparent 70%),
+    linear-gradient(160deg, #111b19 0%, #0c1110 50%, #1c120d 100%);
+}
+.g-dusk {
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 0%, rgba(80, 105, 165, 0.24), transparent 70%),
+    linear-gradient(180deg, #0e1519 0%, #0b0f16 100%);
+}
+.g-ghost {
+  background:
+    radial-gradient(ellipse 60% 70% at 15% 20%, rgba(143, 242, 110, 0.13), transparent 70%),
+    linear-gradient(180deg, #0b1015 0%, #0d1714 100%);
+}
+.g-fire {
+  background:
+    radial-gradient(ellipse 60% 90% at 50% 0%, rgba(226, 85, 43, 0.30), transparent 70%),
+    linear-gradient(180deg, #160e0b 0%, #0a0d0d 100%);
+}
+.card, .ghost, .feature {
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.005));
+}
