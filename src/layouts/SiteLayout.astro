@@ -6,7 +6,7 @@ import '@fontsource/cinzel/600.css';
 import '@fontsource/cinzel/700.css';
 import '@fontsource/cormorant-garamond/500-italic.css';
 import '@fontsource/cormorant-garamond/600.css';
-import GradientOrbs from '../components/ui/GradientOrbs';
+import BackgroundGradientAnimation from '../components/ui/BackgroundGradientAnimation';
 import { themeVars } from '../lib/theme';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -91,7 +91,7 @@ const jsonLd = JSON.stringify({ '@context': 'https://schema.org', '@graph': grap
   {!noindex && <script type="application/ld+json" set:html={jsonLd} />}
 </head>
 <body class={`${game ? 'game-page' : 'studio-home'} relative isolate bg-(--night) font-sans text-base leading-7 text-(--ink) antialiased selection:bg-[#f04f06] selection:text-black [&_a:focus-visible]:outline-2 [&_a:focus-visible]:outline-offset-4 [&_a:focus-visible]:outline-[#f59a3c] [&_button:focus-visible]:outline-2 [&_button:focus-visible]:outline-offset-4 [&_button:focus-visible]:outline-[#f59a3c] [&_summary:focus-visible]:outline-2 [&_summary:focus-visible]:outline-[#f59a3c]`}>
-  <GradientOrbs client:idle />
+  <BackgroundGradientAnimation client:idle />
   <a class="skip fixed -top-24 left-4 z-50 bg-[#fceed2] p-3 text-black focus:top-3" href="#main"><span data-i18n="Skip to content">Skip to content</span></a>
   <Header game={game} />
   <slot />

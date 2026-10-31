@@ -33,6 +33,18 @@ export const themeVars = [
   '[--s-ink:#e9d5b2] data-[theme=light]:[--s-ink:#53321a]',
   '[--t-1:#140c08] data-[theme=light]:[--t-1:#ecd9bd]',
   '[--t-2:#0a1214] data-[theme=light]:[--t-2:#efe2cc]',
+  // Background gradient animation (site background): base gradient, five blob colours and the
+  // mouse blob as "r,g,b", how blobs blend, and how strongly the blob layer shows.
+  '[--g-start:rgb(5,9,11)] data-[theme=light]:[--g-start:rgb(239,228,210)]',
+  '[--g-end:rgb(8,24,29)] data-[theme=light]:[--g-end:rgb(228,212,186)]',
+  '[--g1:22,163,74] data-[theme=light]:[--g1:248,113,113]',
+  '[--g2:5,150,105] data-[theme=light]:[--g2:251,146,60]',
+  '[--g3:13,148,136] data-[theme=light]:[--g3:251,191,36]',
+  '[--g4:8,145,178] data-[theme=light]:[--g4:250,204,21]',
+  '[--g5:4,120,87] data-[theme=light]:[--g5:252,211,77]',
+  '[--g-pointer:6,182,212] data-[theme=light]:[--g-pointer:249,115,22]',
+  '[--g-blend:screen] data-[theme=light]:[--g-blend:multiply]',
+  '[--g-alpha:.7] data-[theme=light]:[--g-alpha:.8]',
 ].join(' ');
 export const eyebrow = "eyebrow mb-5 flex items-center gap-3 font-['Cinzel'] text-[11px] font-semibold tracking-[.24em] text-(--accent-2) uppercase before:h-px before:w-8 before:shrink-0 before:bg-linear-to-r before:from-transparent before:to-(--accent-2) [[lang=bn]_&]:font-sans [[lang=bn]_&]:tracking-normal";
 export const display = "font-['Cinzel'] font-semibold tracking-[.01em] [[lang=bn]_&]:font-sans [[lang=bn]_&]:font-bold [[lang=bn]_&]:tracking-normal";
@@ -48,10 +60,10 @@ export const card = 'rounded-2xl border border-(--line)/10 bg-(--card)/80 shadow
 export const rule = 'before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-linear-to-r before:from-transparent before:via-(--line)/20 before:to-transparent';
 // Each band of the page gets its own night tone (all semi-transparent over the floating lights).
 export const band = {
-  teal: 'bg-(--b-teal)/72',
-  night: 'bg-(--b-night)/82',
-  mist: 'bg-(--b-mist)/72',
-  dusk: 'bg-(--b-dusk)/72',
-  deep: 'bg-(--b-deep)/88',
+  teal: 'bg-(--b-teal)/38',
+  night: 'bg-(--b-night)/50',
+  mist: 'bg-(--b-mist)/38',
+  dusk: 'bg-(--b-dusk)/38',
+  deep: 'bg-(--b-deep)/65',
 };
 export const textLink = 'inline-flex items-center gap-2 border-b border-[#f04f06]/60 py-2 text-xs font-semibold text-(--ink) transition-colors hover:border-(--accent) hover:text-(--accent)';
