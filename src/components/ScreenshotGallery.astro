@@ -1,0 +1,22 @@
+---
+// Focus cards (adapted from Aceternity UI Focus Cards): hovering one screenshot softly blurs the rest.
+const screenshots = [
+  { file: 'start', alt: 'Shakchunnir Badhon start screen with its Bengali title and village night setting', caption: 'The start screen', key: 'game.96' },
+  { file: 'chase', alt: 'Shakchunni chasing Kalu on the mud road', caption: 'The chase', key: 'game.97' },
+  { file: 'khal', alt: 'Kalu on a banana raft crossing the khal', caption: 'Crossing the khal', key: 'game.98' },
+  { file: 'field', alt: 'Moonlit paddy fields in Bengal', caption: 'The paddy fields', key: 'game.99' },
+  { file: 'storm', alt: 'A Kalboishakhi storm on the village road', caption: 'Kalboishakhi', key: 'game.100' },
+  { file: 'blood', alt: 'The blood moon turns the night red', caption: 'Blood moon', key: 'game.101' },
+];
+---
+<div class="shots flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 md:grid md:grid-cols-3 xl:grid-cols-6 md:gap-5 md:overflow-visible [&>figure]:min-w-0 [&>figure]:flex-[0_0_57%] [&>figure]:snap-start [&>figure]:transition-all [&>figure]:duration-300 [&>figure]:ease-out pointer-fine:[&:has(>figure:hover)>figure:not(:hover)]:scale-[.97] pointer-fine:[&:has(>figure:hover)>figure:not(:hover)]:opacity-55 pointer-fine:[&:has(>figure:hover)>figure:not(:hover)]:blur-[2px] [&_figcaption]:mt-3 [&_figcaption]:text-center [&_figcaption]:font-['Cinzel'] [&_figcaption]:text-[10px] [&_figcaption]:tracking-[.12em] [&_figcaption]:text-(--ink-3) [[lang=bn]_&_figcaption]:font-sans [[lang=bn]_&_figcaption]:tracking-normal">
+  {screenshots.map(shot => (
+    <figure>
+      <a class="screenshot-open group relative block cursor-zoom-in overflow-hidden rounded-lg [&>img]:aspect-[9/16] [&>img]:w-full [&>img]:rounded-lg [&>img]:border [&>img]:border-(--line)/15 [&>img]:shadow-[0_20px_50px_-25px_rgba(0,0,0,.9)] [&>img]:object-cover [&>img]:transition-all [&>img]:duration-500 motion-safe:[&:hover>img]:scale-105 [&:hover>img]:brightness-110" href={`/img/shot-${shot.file}.jpg`}>
+        <img src={`/img/shot-${shot.file}.jpg`} alt={shot.alt} loading="lazy" width="540" height="960" />
+        <span class="screenshot-zoom absolute right-2 bottom-2 grid size-8 place-items-center rounded-full bg-linear-to-br from-[#e2560f] to-[#f59a3c] text-lg text-[#1a0a03] shadow-[0_0_14px_-2px_#f04f06]" aria-hidden="true">↗︎</span>
+      </a>
+      <figcaption data-i18n={shot.key}>{shot.caption}</figcaption>
+    </figure>
+  ))}
+</div>

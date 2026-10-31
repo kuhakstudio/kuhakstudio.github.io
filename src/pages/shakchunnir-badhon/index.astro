@@ -1,0 +1,143 @@
+---
+import GameHero from '../../components/GameHero.astro';
+import ScreenshotGallery from '../../components/ScreenshotGallery.astro';
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import GlowingEffect from '../../components/ui/GlowingEffect';
+import MovingBorder from '../../components/ui/MovingBorder';
+import TracingBeam from '../../components/ui/TracingBeam';
+import BorderGlow from '../../components/ui/BorderGlow';
+import { eyebrow, h2Small, ivory, rule, band } from '../../lib/theme';
+// Focus cards on the ghost grid are adapted from Aceternity UI Focus Cards.
+const glyph = 'glyph grid size-12 place-items-center rounded-xl border border-[#f59a3c]/30 bg-[#f04f06]/10 text-3xl text-(--accent) shadow-[0_0_20px_-8px_#f04f06]';
+---
+<SiteLayout game title="Shakchunnir Badhon · KUHAK Studio" description="Shakchunnir Badhon is a Bengali folk-horror endless runner from KUHAK Studio. Explore its ghosts, gameplay and village world. Coming soon to Android." image="/img/social/shakchunnir-badhon.jpg">
+<GameHero />
+
+<main id="main">
+  <section class={`relative isolate py-14 md:py-20 pt-12 ${band.teal}`}>
+    <div class="text-center wrap mx-auto w-full max-w-[1320px] px-5 sm:px-8">
+      <p class={`${eyebrow} justify-center after:h-px after:w-8 after:shrink-0 after:bg-linear-to-l after:from-transparent after:to-(--accent-2)`} data-i18n="game.50">A comic folk-horror endless runner</p>
+      <p class="mx-auto mb-5 max-w-[720px] lead font-['Cormorant_Garamond'] text-2xl leading-snug font-medium text-(--lead) italic md:text-[1.75rem] [[lang=bn]_&]:font-sans [[lang=bn]_&]:text-xl [[lang=bn]_&]:not-italic" data-i18n="game.51">Run from Shakchunni through a haunted Bengal
+      village. Dodge the ghosts of our folk tales, keep your lantern lit, and don't let her catch you.</p>
+      <ul class="justify-center pills my-5 flex flex-wrap gap-2 [&>li]:rounded-full [&>li]:border [&>li]:border-(--line)/15 [&>li]:bg-(--line)/[.04] [&>li]:px-4 [&>li]:py-1 [&>li]:text-[11px] [&>li]:text-(--ink-2)"><li data-i18n="game.52">Android</li><li data-i18n="game.53">Free, with ads</li><li data-i18n="game.54">Bangla &amp; English</li><li data-i18n="game.55">For ages 13+</li></ul>
+      <div class="justify-center actions mt-5 flex flex-wrap gap-3"><span class="soon relative inline-flex overflow-hidden rounded-full p-px"><MovingBorder client:visible /><span class="relative z-10 inline-flex items-center rounded-full border border-[#f59a3c]/25 bg-[#0d0805]/95 px-6 py-2.5 text-xs text-[#f5c48a]" data-i18n="game.56">Coming soon to Google Play</span></span></div>
+    </div>
+  </section>
+
+  <section id="story" class={`relative isolate py-16 md:py-24 ${band.night} ${rule}`}>
+    <div class="wrap split mx-auto w-full max-w-[1320px] px-5 sm:px-8 grid items-center gap-8 md:grid-cols-2 md:gap-16 [&>img]:max-h-[580px] [&>img]:w-full [&>img]:rounded-lg [&>img]:object-cover">
+      <div class="prose relative text-sm leading-8 text-(--ink-2) md:pl-12 [&>p]:mb-5 [&>li]:my-3 [&>li]:list-disc">
+        <TracingBeam client:visible className="hidden md:block" />
+        <p class={eyebrow} data-i18n="game.57">The story</p>
+        <h2 data-i18n="game.58" class={`${h2Small} mb-5 ${ivory}`}>Tonight, she wants a husband</h2>
+        <p data-i18n="game.59">Kalu is a young man walking home late, his lantern swinging, humming to keep the dark away.
+        Then she comes out of the trees: <b>Shakchunni</b>, the ghost of Bengali folk tales who wears
+        a married woman's white shakha bangles and has never stopped wanting to be a wife.</p>
+        <p data-i18n="game.60">She has picked her groom. Kalu has other plans. He runs: down the broken mud road, through
+        bamboo groves and the cremation ground, along the narrow aal between flooded paddy fields,
+        over rickety bamboo sankos and across the khal on a banana-trunk raft, while every ghost of
+        the village gets in his way.</p>
+        <p data-i18n="game.61">She giggles. She calls him <i>jamai</i>. She will not stop.</p>
+      </div>
+      <img loading="lazy" decoding="async" width="600" height="750" src="/img/ghost-kalu.jpg" alt="Kalu with his lantern, Shakchunni close behind him" class="rounded-2xl border border-(--line)/12 shadow-[0_30px_70px_-30px_rgba(0,0,0,.95),0_0_50px_-25px_rgba(240,79,6,.4)]">
+    </div>
+  </section>
+
+  <section class={`relative isolate py-16 md:py-24 ${band.dusk} ${rule}`}>
+    <div class="wrap mx-auto w-full max-w-[1320px] px-5 sm:px-8">
+      <p class={eyebrow} data-i18n="game.62">How it plays</p>
+      <h2 data-i18n="game.63" class={`${h2Small} mb-8 ${ivory}`}>Simple to play, hard to escape</h2>
+      <div class="grid four grid-cols-1 min-[380px]:grid-cols-2 gap-4 lg:grid-cols-4">
+        <div class="card tile relative rounded-2xl border border-(--line)/10 bg-linear-to-b from-(--t-1)/90 to-(--t-2)/90 p-6 shadow-[inset_0_1px_0_0_rgba(252,238,210,.07)] transition-transform duration-300 motion-safe:hover:-translate-y-1 [&>h3]:mt-5 [&>h3]:mb-3 [&>h3]:font-['Cinzel'] [&>h3]:text-base [&>h3]:font-semibold [&>h3]:tracking-[.04em] [&>h3]:text-(--ink) [[lang=bn]_&>h3]:font-sans [&>p]:text-xs [&>p]:leading-6 [&>p]:text-(--ink-3) [&>img]:size-12 [&>img]:object-contain"><GlowingEffect client:visible /><div class={glyph}>⇆</div><h3 data-i18n="game.64">Run</h3>
+          <p data-i18n="game.65">Swipe to change lanes and take the corners, swipe up to jump, down to slide. The further
+          you go, the faster it gets.</p></div>
+        <div class="card tile relative rounded-2xl border border-(--line)/10 bg-linear-to-b from-(--t-1)/90 to-(--t-2)/90 p-6 shadow-[inset_0_1px_0_0_rgba(252,238,210,.07)] transition-transform duration-300 motion-safe:hover:-translate-y-1 [&>h3]:mt-5 [&>h3]:mb-3 [&>h3]:font-['Cinzel'] [&>h3]:text-base [&>h3]:font-semibold [&>h3]:tracking-[.04em] [&>h3]:text-(--ink) [[lang=bn]_&>h3]:font-sans [&>p]:text-xs [&>p]:leading-6 [&>p]:text-(--ink-3) [&>img]:size-12 [&>img]:object-contain"><GlowingEffect client:visible /><div class={glyph}>✦</div><h3 data-i18n="game.66">Keep the light</h3>
+          <p data-i18n="game.67">Your lantern burns down. Grab oil bottles, find a kupi. When it goes out, the ghosts
+          close in and she catches you in the dark.</p></div>
+        <div class="card tile relative rounded-2xl border border-(--line)/10 bg-linear-to-b from-(--t-1)/90 to-(--t-2)/90 p-6 shadow-[inset_0_1px_0_0_rgba(252,238,210,.07)] transition-transform duration-300 motion-safe:hover:-translate-y-1 [&>h3]:mt-5 [&>h3]:mb-3 [&>h3]:font-['Cinzel'] [&>h3]:text-base [&>h3]:font-semibold [&>h3]:tracking-[.04em] [&>h3]:text-(--ink) [[lang=bn]_&>h3]:font-sans [&>p]:text-xs [&>p]:leading-6 [&>p]:text-(--ink-3) [&>img]:size-12 [&>img]:object-contain"><GlowingEffect client:visible /><img loading="lazy" decoding="async" width="128" height="128" src="/img/icon-tabij.png" alt=""><h3 data-i18n="game.68">Kori &amp; tabij</h3>
+          <p data-i18n="game.69">Collect kori, the old cowrie-shell money, and spend it on a tabij: for a few seconds no
+          ghost can touch you.</p></div>
+        <div class="card tile relative rounded-2xl border border-(--line)/10 bg-linear-to-b from-(--t-1)/90 to-(--t-2)/90 p-6 shadow-[inset_0_1px_0_0_rgba(252,238,210,.07)] transition-transform duration-300 motion-safe:hover:-translate-y-1 [&>h3]:mt-5 [&>h3]:mb-3 [&>h3]:font-['Cinzel'] [&>h3]:text-base [&>h3]:font-semibold [&>h3]:tracking-[.04em] [&>h3]:text-(--ink) [[lang=bn]_&>h3]:font-sans [&>p]:text-xs [&>p]:leading-6 [&>p]:text-(--ink-3) [&>img]:size-12 [&>img]:object-contain"><GlowingEffect client:visible /><img loading="lazy" decoding="async" width="128" height="128" src="/img/icon-jharu.png" alt=""><h3 data-i18n="game.70">The jharu</h3>
+          <p data-i18n="game.71">Caught? With a jharu in your bag, whack her across the face, watch her fly, and run on.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ghosts" class={`relative isolate py-16 md:py-24 ${band.mist} ${rule}`}>
+    <div class="wrap mx-auto w-full max-w-[1320px] px-5 sm:px-8">
+      <p class={eyebrow} data-i18n="game.72">Meet the ghosts</p>
+      <h2 data-i18n="game.73" class={`${h2Small} mb-3 ${ivory}`}>Straight out of grandmother’s ghost stories</h2>
+      <p class="mb-9 max-w-[720px] muted text-sm leading-7 text-(--ink-3)" data-i18n="game.74">Every ghost on the road comes from the stories
+      told in Bengali villages after dark, and each one plays the way its story goes.</p>
+      <div class="ghosts grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6 pointer-fine:[&:has(>article:hover)>article:not(:hover)]:scale-[.98] pointer-fine:[&:has(>article:hover)>article:not(:hover)]:opacity-60 pointer-fine:[&:has(>article:hover)>article:not(:hover)]:blur-[2px]">
+        <article class="ghost relative rounded-2xl border border-(--line)/10 bg-(--card)/85 shadow-[inset_0_1px_0_0_rgba(252,238,210,.07)] transition-all duration-300 motion-safe:hover:-translate-y-1 [&>img]:aspect-[4/5] [&>img]:w-full [&>img]:rounded-t-2xl [&>img]:object-cover [&>img]:object-top"><GlowingEffect client:visible /><img decoding="async" width="600" height="750" src="/img/ghost-shakchunni.jpg" alt="Shakchunni in her white sari with shakha and pola bangles" loading="lazy">
+          <div class="txt p-6 [&_p]:mt-3 [&_p]:text-xs [&_p]:leading-6 [&_p]:text-(--ink-3)"><div class="names mb-4 flex flex-wrap items-baseline gap-3 [&>h3]:font-['Cinzel'] [&>h3]:text-xs [&>h3]:font-semibold [&>h3]:tracking-[.08em] [&>h3]:text-(--ink) [[lang=bn]_&>h3]:font-sans"><span class="bn font-['Atma'] text-xl text-(--accent)" lang="bn">শাঁকচুন্নি</span><h3 data-i18n="game.75">Shakchunni</h3></div>
+          <p data-i18n="game.76">The ghost of a married woman, known by her white conch-shell bangles. She longs to be a wife again.</p>
+          <p class="play [&_b]:text-(--accent-2)" data-i18n="game.77"><b>In the game:</b> she chases you all night. Stumble twice and she has you.</p></div></article>
+        <article class="ghost relative rounded-2xl border border-(--line)/10 bg-(--card)/85 shadow-[inset_0_1px_0_0_rgba(252,238,210,.07)] transition-all duration-300 motion-safe:hover:-translate-y-1 [&>img]:aspect-[4/5] [&>img]:w-full [&>img]:rounded-t-2xl [&>img]:object-cover [&>img]:object-top"><GlowingEffect client:visible /><img decoding="async" width="600" height="750" src="/img/ghost-mechho_bhoot.jpg" alt="Mechho Bhoot bursting out of the mud with a huge open mouth" loading="lazy">
+          <div class="txt p-6 [&_p]:mt-3 [&_p]:text-xs [&_p]:leading-6 [&_p]:text-(--ink-3)"><div class="names mb-4 flex flex-wrap items-baseline gap-3 [&>h3]:font-['Cinzel'] [&>h3]:text-xs [&>h3]:font-semibold [&>h3]:tracking-[.08em] [&>h3]:text-(--ink) [[lang=bn]_&>h3]:font-sans"><span class="bn font-['Atma'] text-xl text-(--accent)" lang="bn">মেছো ভূত</span><h3 data-i18n="game.78">Mechho Bhoot</h3></div>
+          <p data-i18n="game.79">The fish-loving ghost of ponds and marshes, said to follow fishermen home for their catch.</p>
+          <p class="play [&_b]:text-(--accent-2)" data-i18n="game.80"><b>In the game:</b> bursts out of the mud (jump it), or out of the khal (steer round it).</p></div></article>
+        <article class="ghost relative rounded-2xl border border-(--line)/10 bg-(--card)/85 shadow-[inset_0_1px_0_0_rgba(252,238,210,.07)] transition-all duration-300 motion-safe:hover:-translate-y-1 [&>img]:aspect-[4/5] [&>img]:w-full [&>img]:rounded-t-2xl [&>img]:object-cover [&>img]:object-top"><GlowingEffect client:visible /><img decoding="async" width="600" height="750" src="/img/ghost-petni.jpg" alt="Petni hanging upside down from a tree branch" loading="lazy">
+          <div class="txt p-6 [&_p]:mt-3 [&_p]:text-xs [&_p]:leading-6 [&_p]:text-(--ink-3)"><div class="names mb-4 flex flex-wrap items-baseline gap-3 [&>h3]:font-['Cinzel'] [&>h3]:text-xs [&>h3]:font-semibold [&>h3]:tracking-[.08em] [&>h3]:text-(--ink) [[lang=bn]_&>h3]:font-sans"><span class="bn font-['Atma'] text-xl text-(--accent)" lang="bn">পেত্নী</span><h3 data-i18n="game.81">Petni</h3></div>
+          <p data-i18n="game.82">A restless female ghost who makes her home in old trees and dangles from the branches.</p>
+          <p class="play [&_b]:text-(--accent-2)" data-i18n="game.83"><b>In the game:</b> drops down in front of you. Slide under her.</p></div></article>
+        <article class="ghost relative rounded-2xl border border-(--line)/10 bg-(--card)/85 shadow-[inset_0_1px_0_0_rgba(252,238,210,.07)] transition-all duration-300 motion-safe:hover:-translate-y-1 [&>img]:aspect-[4/5] [&>img]:w-full [&>img]:rounded-t-2xl [&>img]:object-cover [&>img]:object-top"><GlowingEffect client:visible /><img decoding="async" width="600" height="750" src="/img/ghost-palki.jpg" alt="Ghostly bearers carrying a wedding palki" loading="lazy">
+          <div class="txt p-6 [&_p]:mt-3 [&_p]:text-xs [&_p]:leading-6 [&_p]:text-(--ink-3)"><div class="names mb-4 flex flex-wrap items-baseline gap-3 [&>h3]:font-['Cinzel'] [&>h3]:text-xs [&>h3]:font-semibold [&>h3]:tracking-[.08em] [&>h3]:text-(--ink) [[lang=bn]_&>h3]:font-sans"><span class="bn font-['Atma'] text-xl text-(--accent)" lang="bn">পালকির বেহারা</span><h3 data-i18n="game.84">The palki bearers</h3></div>
+          <p data-i18n="game.85">A ghostly wedding procession that crosses the road at midnight, chanting.</p>
+          <p class="play [&_b]:text-(--accent-2)" data-i18n="game.86"><b>In the game:</b> they carry the palki across both lanes. Slide under the pole.</p></div></article>
+        <article class="ghost relative rounded-2xl border border-(--line)/10 bg-(--card)/85 shadow-[inset_0_1px_0_0_rgba(252,238,210,.07)] transition-all duration-300 motion-safe:hover:-translate-y-1 [&>img]:aspect-[4/5] [&>img]:w-full [&>img]:rounded-t-2xl [&>img]:object-cover [&>img]:object-top"><GlowingEffect client:visible /><img decoding="async" width="600" height="750" src="/img/ghost-tree_ghost.jpg" alt="A tree ghost with glowing eyes in its trunk" loading="lazy">
+          <div class="txt p-6 [&_p]:mt-3 [&_p]:text-xs [&_p]:leading-6 [&_p]:text-(--ink-3)"><div class="names mb-4 flex flex-wrap items-baseline gap-3 [&>h3]:font-['Cinzel'] [&>h3]:text-xs [&>h3]:font-semibold [&>h3]:tracking-[.08em] [&>h3]:text-(--ink) [[lang=bn]_&>h3]:font-sans"><span class="bn font-['Atma'] text-xl text-(--accent)" lang="bn">গেছো ভূত</span><h3 data-i18n="game.87">Gechho Bhoot</h3></div>
+          <p data-i18n="game.88">The ghost that lives inside a tree and doesn't like being disturbed.</p>
+          <p class="play [&_b]:text-(--accent-2)" data-i18n="game.89"><b>In the game:</b> throws its whole tree across the road. Jump it or slide under.</p></div></article>
+        <article class="ghost relative rounded-2xl border border-(--line)/10 bg-(--card)/85 shadow-[inset_0_1px_0_0_rgba(252,238,210,.07)] transition-all duration-300 motion-safe:hover:-translate-y-1 [&>img]:aspect-[4/5] [&>img]:w-full [&>img]:rounded-t-2xl [&>img]:object-cover [&>img]:object-top"><GlowingEffect client:visible /><img decoding="async" width="600" height="750" src="/img/ghost-kaktarua.jpg" alt="Kaktarua, a scarecrow with a clay-pot head, in a paddy field" loading="lazy">
+          <div class="txt p-6 [&_p]:mt-3 [&_p]:text-xs [&_p]:leading-6 [&_p]:text-(--ink-3)"><div class="names mb-4 flex flex-wrap items-baseline gap-3 [&>h3]:font-['Cinzel'] [&>h3]:text-xs [&>h3]:font-semibold [&>h3]:tracking-[.08em] [&>h3]:text-(--ink) [[lang=bn]_&>h3]:font-sans"><span class="bn font-['Atma'] text-xl text-(--accent)" lang="bn">কাকতাড়ুয়া</span><h3 data-i18n="game.90">Kaktarua</h3></div>
+          <p data-i18n="game.91">The scarecrow of the paddy fields, with a clay-pot head. Tonight, it's awake.</p>
+          <p class="play [&_b]:text-(--accent-2)" data-i18n="game.92"><b>In the game:</b> hops into your lane on the aal. Switch lanes.</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="screens" class={`relative isolate py-16 md:py-24 ${band.night} ${rule}`}>
+    <div class="wrap mx-auto w-full max-w-[1320px] px-5 sm:px-8">
+      <p class={eyebrow} data-i18n="game.93">From the game</p>
+      <h2 data-i18n="game.94" class={`${h2Small} mb-3 ${ivory}`}>One night, never the same twice</h2>
+      <p class="mb-8 max-w-[720px] muted text-sm leading-7 text-(--ink-3)" data-i18n="game.95">Rain comes suddenly. A Kalboishakhi storm snaps
+      branches onto the road. Under a blood moon everything comes faster, but every kori counts double.</p>
+      <ScreenshotGallery />
+    </div>
+  </section>
+
+  <section class={`relative isolate py-16 md:py-24 ${band.teal} ${rule}`}>
+    <div class="wrap split mx-auto w-full max-w-[1320px] px-5 sm:px-8 grid items-center gap-8 md:grid-cols-2 md:gap-16 [&>img]:max-h-[580px] [&>img]:w-full [&>img]:rounded-lg [&>img]:object-cover">
+      <div>
+        <p class={eyebrow} data-i18n="game.102">Made in Bangladesh</p>
+        <h2 data-i18n="game.103" class={`${h2Small} mb-5 ${ivory}`}>A village night you can hear</h2>
+        <ul class="m-0 pl-5 prose text-sm leading-8 text-(--ink-2) [&>li]:my-3 [&>li]:list-disc [&>li]:marker:text-(--accent-2)">
+          <li data-i18n="game.104">Ghosts that talk back in village dialect, funny and nasal, with subtitles</li>
+          <li data-i18n="game.105">Play in Bangla or English, switch any time</li>
+          <li data-i18n="game.106">Crickets, jackals, owls and frogs in the dark; real rain and thunder</li>
+          <li data-i18n="game.107">Graphics settings that keep it smooth on budget phones</li>
+          <li data-i18n="game.108">Short runs, easy to pick up, hard to put down</li>
+        </ul>
+      </div>
+      <img loading="lazy" decoding="async" width="600" height="750" src="/img/ghost-shakchunni.jpg" alt="" class="max-h-[520px] w-full rounded-2xl border border-(--line)/12 object-cover shadow-[0_30px_70px_-30px_rgba(0,0,0,.95)]">
+    </div>
+  </section>
+
+  <section id="faq" class={`relative isolate py-16 md:py-24 ${band.dusk} ${rule}`}>
+    <div class="wrap mx-auto w-full max-w-[1320px] px-5 sm:px-8">
+      <p class={eyebrow} data-i18n="game.109">Questions</p>
+      <h2 data-i18n="game.110" class={`${h2Small} mb-5 ${ivory}`}>FAQ</h2>
+      <div class="faq max-w-4xl [&_details]:border-b [&_details]:border-(--line)/10 [&_details]:px-4 [&_details]:py-6 [&_details[open]]:rounded-xl [&_details[open]]:bg-[#f04f06]/[.07] [&_summary]:flex [&_summary]:cursor-pointer [&_summary]:list-none [&_summary]:items-center [&_summary]:justify-between [&_summary]:gap-5 [&_summary]:text-sm [&_summary]:font-bold [&_summary]:after:text-xl [&_summary]:after:text-(--accent) [&_summary]:after:content-['+'] [&_details[open]_summary]:after:content-['−'] [&_p]:mt-4 [&_p]:text-sm [&_p]:leading-7 [&_p]:text-(--ink-3) [&_a]:text-(--accent) [&_a]:underline">
+        <details><summary data-i18n="game.111">Is it free?</summary><p data-i18n="game.112">Yes. The game is free and shows ads. Ads that give you a reward (to keep running after you are caught, or towards a jharu) are always your choice.</p></details>
+        <details><summary data-i18n="game.113">When and where can I play it?</summary><p data-i18n="game.114">It is coming soon to Google Play for Android phones.</p></details>
+        <details><summary data-i18n="game.115">Which languages?</summary><p data-i18n="game.116">Bangla and English, switchable in the settings. The ghosts speak in a village dialect, with subtitles.</p></details>
+        <details><summary data-i18n="game.117">Is it very scary?</summary><p data-i18n="game.118">It is comic horror: spooky, dark and full of ghosts, but played for laughs. No gore. It is meant for players aged 13 and up.</p></details>
+        <details><summary data-i18n="game.119">Will it run on my phone?</summary><p data-i18n="game.120">It is built for budget Android phones too. The graphics setting picks the right level automatically, and you can change it yourself.</p></details>
+        <details><summary data-i18n="game.121">What data does the game collect?</summary><p data-i18n="game.122">The game keeps your progress on your phone only. Ads are served by Google AdMob, which collects some device data. See the <a href="/shakchunnir-badhon/privacy.html">privacy policy</a>.</p></details>
+      </div>
+    </div>
+  </section>
+<section class={`game-community relative isolate py-16 text-center ${band.deep} ${rule}`}><div class="wrap mx-auto w-full max-w-[1320px] px-5 sm:px-8"><a class="relative inline-flex rounded-full bg-(--line)/10 p-px" href="https://www.facebook.com/shakchunnirbadhon/" target="_blank" rel="noopener noreferrer"><BorderGlow client:visible /><span class="relative z-10 inline-flex min-h-12 items-center gap-6 rounded-full bg-linear-to-r from-[#1c0c05] to-[#0a0705] px-6 text-xs font-bold text-[#fceed2]"><span data-i18n="Follow the game on Facebook">Follow the game on Facebook</span><span class="text-base text-[#f59a3c]" aria-hidden="true">↗︎</span></span></a></div></section></main>
+</SiteLayout>

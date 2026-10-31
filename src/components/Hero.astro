@@ -1,0 +1,52 @@
+---
+import NightSky from './ui/NightSky';
+import Spotlight from './ui/Spotlight';
+import BorderGlow from './ui/BorderGlow';
+import TiltCard from './ui/TiltCard';
+import Marquee from './ui/Marquee';
+const strip = [['bold.strip1', 'BENGALI ROOTS'], ['bold.strip2', 'BOUNDLESS WORLDS'], ['bold.strip3', 'BUILT TO PLAY'], ['bold.strip4', 'KUHAK STUDIO']];
+const lift = 'transition-transform duration-200 ease-linear';
+---
+<header class="studio-hero relative isolate overflow-hidden">
+  <picture>
+    <source media="(max-width: 767px)" srcset="/img/studio-river-mobile.webp" />
+    <img decoding="async" class="hero-landscape pointer-events-none absolute inset-0 -z-30 size-full object-cover object-[62%_center] opacity-90 [[data-theme=light]_&]:hidden" src="/img/studio-river.webp" alt="" aria-hidden="true" width="1672" height="941" fetchpriority="high" />
+  </picture>
+  <img decoding="async" loading="lazy" class="pointer-events-none absolute inset-0 -z-30 hidden size-full object-cover object-[70%_center] opacity-95 [[data-theme=light]_&]:block" src="/img/studio-world.webp" alt="" aria-hidden="true" width="1774" height="887" />
+  <div class="pointer-events-none absolute inset-0 -z-20 bg-linear-to-r from-(--night)/95 via-(--night)/55 to-transparent [[data-theme=light]_&]:from-(--night)/80 [[data-theme=light]_&]:via-(--night)/25" aria-hidden="true"></div>
+  <div class="pointer-events-none absolute inset-0 -z-20 bg-linear-to-t from-(--night) via-transparent to-(--night)/40 [[data-theme=light]_&]:to-transparent" aria-hidden="true"></div>
+  <div class="pointer-events-none absolute -top-48 -left-48 -z-10 size-[36rem] rounded-full bg-[radial-gradient(circle,rgba(240,79,6,.3)_0%,rgba(240,79,6,.08)_40%,rgba(240,79,6,0)_68%)]" aria-hidden="true"></div>
+  <NightSky client:visible className="-z-10 [mask-image:linear-gradient(to_bottom,black_25%,transparent_70%)] [[data-theme=light]_&]:hidden" />
+  <Spotlight client:visible className="-z-10 [[data-theme=light]_&]:hidden" />
+  <div class="hero-grid mx-auto grid min-h-[clamp(600px,84vh,840px)] w-full max-w-[1320px] items-center gap-10 px-5 pt-12 pb-14 sm:px-8 md:grid-cols-[1.1fr_.9fr] md:gap-12 lg:gap-20">
+    <div class="hero-content">
+      <p class="mb-7 flex items-center gap-3 font-['Cinzel'] text-[11px] font-semibold tracking-[.24em] text-(--accent-2) uppercase before:h-px before:w-8 before:bg-linear-to-r before:from-transparent before:to-(--accent-2) [[lang=bn]_&]:font-sans [[lang=bn]_&]:tracking-normal"><span data-i18n="bold.indie">INDEPENDENT GAMES. UNMISTAKABLY BENGALI.</span></p>
+      <h1 class="font-['Cinzel'] text-[clamp(2.5rem,8.5vw,3.9rem)] leading-[1.08] font-semibold tracking-[.01em] md:text-[clamp(2.9rem,5vw,4.7rem)] [[lang=bn]_&]:font-sans [[lang=bn]_&]:text-[clamp(2.6rem,6vw,4.8rem)] [[lang=bn]_&]:leading-tight [[lang=bn]_&]:font-bold"><span class="bg-linear-to-b from-(--hi-1) via-(--hi-2) to-(--hi-3) bg-clip-text text-transparent" data-i18n="copy.hero.first">Beyond the Familiar.</span><br><span class="bg-linear-to-r from-[#f04f06] via-(--accent) to-(--em-end) bg-clip-text text-transparent" data-i18n="copy.hero.second">Into KUHAK.</span></h1>
+      <p class="mt-7 flex items-center gap-4 font-['Cormorant_Garamond'] text-2xl leading-snug font-medium text-(--lead) italic md:text-[1.7rem] [[lang=bn]_&]:font-sans [[lang=bn]_&]:text-xl [[lang=bn]_&]:not-italic"><span class="h-px w-10 shrink-0 bg-linear-to-r from-transparent to-(--lead)/60" aria-hidden="true"></span><span data-i18n="bold.slogan">Where the Legends of Bengal Come Alive</span></p>
+      <p class="mt-6 max-w-[430px] text-sm leading-7 text-(--ink-2)" data-i18n="We turn the stories, folklore and imagination of Bengal into games for players everywhere.">We turn the stories, folklore and imagination of Bengal into games for players everywhere.</p>
+      <div class="mt-8 flex flex-wrap items-center gap-6">
+        <a class="relative inline-flex rounded-full bg-(--line)/10 p-px" href="#games"><BorderGlow client:visible /><span class="relative z-10 inline-flex min-h-12 items-center gap-6 rounded-full bg-linear-to-r from-[#1c0c05] to-[#0a0705] px-6 text-xs font-bold tracking-wide text-[#fceed2]"><span data-i18n="copy.extraordinary">Step Into the Extraordinary.</span><span class="text-base text-[#f59a3c]" aria-hidden="true">↗︎</span></span></a>
+        <a class="text-xs text-(--ink-2) transition-colors hover:text-(--ink)" href="#studio"><span data-i18n="Our story">Our story</span> ↓</a>
+      </div>
+    </div>
+    <div class="[perspective:1000px]">
+      <a class="hero-game relative mx-auto block w-[calc(100%-16px)] max-w-[440px] rounded-2xl border border-(--line)/15 bg-(--card)/85 shadow-[0_30px_80px_-20px_rgba(0,0,0,.9),0_0_60px_-20px_rgba(240,79,6,.35)] transition-transform duration-200 ease-linear [transform-style:preserve-3d]" href="/shakchunnir-badhon/" aria-label="Discover Shakchunnir Badhon">
+        <TiltCard client:visible />
+        <span data-tilt-z="20" class={`flex h-11 items-center justify-between rounded-t-2xl border-b border-(--line)/10 bg-(--card-2) px-5 font-['Cinzel'] text-[10px] font-semibold tracking-[.2em] text-(--ink-2) ${lift} [[lang=bn]_&]:font-sans [[lang=bn]_&]:tracking-normal`}><span data-i18n="bold.featured">IN THE SPOTLIGHT</span><span class="text-xl text-(--accent)" aria-hidden="true">↗︎</span></span>
+        <img data-tilt-z="50" decoding="async" class={`h-[270px] w-full object-cover object-[60%_center] md:h-[360px] lg:h-[400px] ${lift}`} src="/img/shakchunnir-badhon-hero.webp" alt="Shakchunnir Badhon promotional artwork featuring Kalu and Shakchunni" srcset="/img/shakchunnir-badhon-hero-mobile.webp 1024w, /img/shakchunnir-badhon-hero.webp 1774w" sizes="(min-width: 768px) 440px, calc(100vw - 56px)" width="1774" height="887" />
+        <span data-tilt-z="35" class={`block rounded-b-2xl bg-linear-to-b from-(--card-2) to-(--card) px-5 py-5 ${lift}`}><span class="font-['Atma'] text-3xl leading-relaxed text-(--ink)" lang="bn">শাঁকচুন্নির বাঁধন</span><span class="mt-2 flex items-center justify-between text-[10px] text-(--ink-3)"><span data-i18n="Coming soon · Android">Coming soon · Android</span><span class="size-1.5 rounded-full bg-[#f59a3c] shadow-[0_0_10px_#f59a3c]"></span></span></span>
+        <span data-tilt-z="80" class={`absolute right-0 bottom-24 flex rotate-[-9deg] items-center gap-4 bg-linear-to-r from-[#e2560f] to-[#f59a3c] px-4 py-3 text-[10px] leading-tight font-black text-[#1a0a03] shadow-xl md:-right-5 ${lift}`}><span data-i18n="bold.first">OUR FIRST<br>ORIGINAL</span><span class="text-3xl" aria-hidden="true">✳︎</span></span>
+      </a>
+    </div>
+  </div>
+</header>
+<div class="relative overflow-hidden border-y border-[#f04f06]/20 bg-linear-to-r from-(--s-1)/90 via-(--s-2)/90 to-(--s-1)/90 text-(--s-ink)">
+  <Marquee client:visible seconds={36} />
+  <div class="[mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+    <div data-marquee class="flex w-max items-center py-4 font-['Cinzel'] text-[11px] font-semibold tracking-[.22em] [[lang=bn]_&]:font-sans [[lang=bn]_&]:tracking-normal">
+      {[0, 1, 2, 3].map(copy => strip.map(([key, text]) => (
+        <span class="flex shrink-0 items-center gap-10 pr-10" aria-hidden={copy > 0 ? 'true' : undefined}><span data-i18n={key}>{text}</span><b class="text-(--accent-2)" aria-hidden="true">✳︎</b></span>
+      )))}
+    </div>
+  </div>
+</div>

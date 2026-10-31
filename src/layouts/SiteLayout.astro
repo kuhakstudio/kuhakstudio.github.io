@@ -1,0 +1,101 @@
+---
+import '../styles/global.css';
+import '@fontsource/atma/700.css';
+import '@fontsource/cinzel/500.css';
+import '@fontsource/cinzel/600.css';
+import '@fontsource/cinzel/700.css';
+import '@fontsource/cormorant-garamond/500-italic.css';
+import '@fontsource/cormorant-garamond/600.css';
+import GradientOrbs from '../components/ui/GradientOrbs';
+import { themeVars } from '../lib/theme';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+interface Props {
+  title: string; description: string; game?: boolean; image?: string;
+  imageAlt?: string; canonicalPath?: string; noindex?: boolean;
+}
+const {
+  title, description, game = false, image = '/img/social/kuhak-studio.jpg',
+  imageAlt = game
+    ? 'Kalu runs with his lantern as Shakchunni and the ghosts of Bengal give chase.'
+    : 'KUHAK Studio botanical emblem above a moonlit Bengal village and river.',
+  canonicalPath = Astro.url.pathname, noindex = false,
+} = Astro.props;
+const site = Astro.site!;
+const canonical = new URL(canonicalPath, site);
+const socialImage = new URL(image, site);
+const organizationId = new URL('/#organization', site).href;
+const websiteId = new URL('/#website', site).href;
+const graph: Record<string, unknown>[] = [
+  {
+    '@type': 'Organization', '@id': organizationId, name: 'KUHAK Studio',
+    url: site.href, logo: new URL('/img/kuhak-studio-logo.png', site).href,
+    description: 'An independent game studio from Bangladesh creating games inspired by Bengali culture, folklore and imagination.',
+    email: 'kuhakstudio@gmail.com', sameAs: ['https://www.facebook.com/kuhakstudio'],
+  },
+  {
+    '@type': 'WebSite', '@id': websiteId, name: 'KUHAK Studio', url: site.href,
+    publisher: { '@id': organizationId }, inLanguage: ['en', 'bn'],
+  },
+  {
+    '@type': 'WebPage', '@id': canonical.href + '#webpage', url: canonical.href,
+    name: title, description, isPartOf: { '@id': websiteId },
+    inLanguage: 'en', primaryImageOfPage: { '@type': 'ImageObject', url: socialImage.href, width: 1200, height: 630, caption: imageAlt },
+  },
+];
+if (game) graph.push({
+  '@type': 'VideoGame', '@id': canonical.href + '#game',
+  name: 'Shakchunnir Badhon', alternateName: 'শাঁকচুন্নির বাঁধন',
+  url: canonical.href, description, image: socialImage.href,
+  operatingSystem: 'Android', gamePlatform: 'Android',
+  genre: ['Bengali folk horror', 'Endless runner'], inLanguage: ['en', 'bn'],
+  publisher: { '@id': organizationId },
+  sameAs: ['https://www.facebook.com/shakchunnirbadhon/'],
+});
+const jsonLd = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }).replace(/</g, '\\u003c');
+---
+<!doctype html>
+<html lang="en" class={`scroll-smooth scroll-pt-24 motion-reduce:scroll-auto ${themeVars}`}>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={socialImage} />
+  <meta property="og:image:secure_url" content={socialImage} />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content={imageAlt} />
+  <meta property="og:site_name" content="KUHAK Studio" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={socialImage} />
+  <meta name="twitter:image:alt" content={imageAlt} />
+  <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large'} />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta name="theme-color" content="#05090b" />
+  <script is:inline>try{if(localStorage.getItem('kuhak-theme')==='light'){document.documentElement.dataset.theme='light';document.querySelector('meta[name="theme-color"]').content='#e6d8c0'}}catch(e){}</script>
+  <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/icons/icon-96.png" type="image/png" sizes="96x96" />
+  <link rel="apple-touch-icon" href="/icons/icon-180.png" sizes="180x180" />
+  <link rel="manifest" href="/site.webmanifest" />
+  {!noindex && <script type="application/ld+json" set:html={jsonLd} />}
+</head>
+<body class={`${game ? 'game-page' : 'studio-home'} relative isolate bg-(--night) font-sans text-base leading-7 text-(--ink) antialiased selection:bg-[#f04f06] selection:text-black [&_a:focus-visible]:outline-2 [&_a:focus-visible]:outline-offset-4 [&_a:focus-visible]:outline-[#f59a3c] [&_button:focus-visible]:outline-2 [&_button:focus-visible]:outline-offset-4 [&_button:focus-visible]:outline-[#f59a3c] [&_summary:focus-visible]:outline-2 [&_summary:focus-visible]:outline-[#f59a3c]`}>
+  <GradientOrbs client:idle />
+  <a class="skip fixed -top-24 left-4 z-50 bg-[#fceed2] p-3 text-black focus:top-3" href="#main"><span data-i18n="Skip to content">Skip to content</span></a>
+  <Header game={game} />
+  <slot />
+  <Footer />
+  <script>import '../scripts/site.js';</script>
+</body>
+</html>

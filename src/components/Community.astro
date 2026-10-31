@@ -1,0 +1,19 @@
+---
+import Lamp from './ui/Lamp';
+import MovingBorder from './ui/MovingBorder';
+import { eyebrow, h2, ivory, ember, body, band, textLink } from '../lib/theme';
+---
+<section id="contact" class={`contact-section relative isolate overflow-hidden pt-36 pb-20 text-center md:pt-44 md:pb-28 ${band.deep}`}>
+  <img decoding="async" src="/img/community-lantern.webp" alt="" width="1774" height="887" loading="lazy" class="pointer-events-none absolute inset-0 -z-20 size-full object-cover object-[75%_center] opacity-55 [[data-theme=light]_&]:opacity-90" />
+  <div class="pointer-events-none absolute inset-0 -z-10 bg-linear-to-r from-(--b-deep)/95 via-(--b-deep)/70 to-(--b-deep)/20 [[data-theme=light]_&]:via-(--b-deep)/80 [[data-theme=light]_&]:to-transparent" aria-hidden="true"></div>
+  <Lamp client:visible className="-z-10" />
+  <div class="wrap mx-auto w-full max-w-[1320px] px-5 sm:px-8">
+    <p class={`${eyebrow} justify-center after:h-px after:w-8 after:bg-linear-to-l after:from-transparent after:to-(--accent-2)`}><span data-i18n="03 / Stay close">03 / Stay close</span></p>
+    <h2 class={`${h2} text-[clamp(2.2rem,5.6vw,5.2rem)] text-balance`}><span class={ivory} data-i18n="copy.enter">Enter a World</span><br><span class={ember} data-i18n="copy.enchantment">of Enchantment.</span></h2>
+    <p class={`muted mx-auto mt-6 max-w-md ${body}`}><span data-i18n="Follow the making of our worlds. Or tell us what’s on your mind.">Follow the making of our worlds. Or tell us what’s on your mind.</span></p>
+    <div class="contact-actions mt-9 flex flex-col items-center justify-center gap-6 md:flex-row">
+      <a class="relative inline-flex overflow-hidden rounded-full p-px" href="https://www.facebook.com/kuhakstudio" target="_blank" rel="noopener noreferrer"><MovingBorder client:visible /><span class="relative z-10 inline-flex min-h-12 items-center gap-6 rounded-full border border-[#f04f06]/30 bg-[#120804]/95 px-7 text-xs font-bold text-[#fceed2]"><span data-i18n="Follow KUHAK Studio">Follow KUHAK Studio</span><span class="text-base text-[#f59a3c]" aria-hidden="true">↗︎</span></span></a>
+      <a class={textLink} href="mailto:kuhakstudio@gmail.com">kuhakstudio@gmail.com ↗︎</a>
+    </div>
+  </div>
+</section>

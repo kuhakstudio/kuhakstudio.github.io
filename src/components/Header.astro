@@ -1,0 +1,37 @@
+---
+import BrandLogo from './BrandLogo.astro';
+interface Props { game?: boolean }
+const { game = false } = Astro.props;
+const pathname = Astro.url.pathname;
+const home = pathname === '/';
+const studioLink = home ? '#studio' : '/#studio';
+const gamesLink = home ? '#games' : '/#games';
+// Resizable navbar (adapted from Aceternity UI Resizable Navbar): a full-width glass bar at the
+// top of the page that shrinks into a floating pill once the page scrolls (site.js sets data-scrolled).
+const item = "rounded-full px-4 py-2 font-['Cinzel'] text-[12px] font-semibold tracking-[.12em] text-(--ink-2) transition-colors hover:bg-(--line)/[.08] hover:text-(--ink) [[lang=bn]_&]:font-sans [[lang=bn]_&]:tracking-normal";
+---
+<header data-resizable class="group/nav sticky top-0 z-40 border-b border-(--line)/10 bg-(--glass)/80 px-3 py-3 backdrop-blur-xl transition-[background-color,border-color,padding] duration-500 after:pointer-events-none after:absolute after:inset-x-0 after:-bottom-px after:h-px after:bg-linear-to-r after:from-transparent after:via-[#f04f06]/45 after:to-transparent after:transition-opacity after:duration-500 data-[scrolled]:border-transparent data-[scrolled]:bg-transparent data-[scrolled]:backdrop-blur-none data-[scrolled]:after:opacity-0 md:px-6">
+  <nav class="mx-auto flex w-full max-w-[1320px] items-center justify-between gap-2 rounded-full border border-transparent transition-all duration-500 ease-[cubic-bezier(.22,1,.36,1)] group-data-[scrolled]/nav:max-w-[980px] group-data-[scrolled]/nav:border-(--line)/15 group-data-[scrolled]/nav:bg-(--panel)/85 group-data-[scrolled]/nav:py-1.5 group-data-[scrolled]/nav:pr-1.5 group-data-[scrolled]/nav:pl-4 group-data-[scrolled]/nav:shadow-[0_14px_40px_-14px_rgba(0,0,0,.95),0_0_0_1px_rgba(240,79,6,.08)] group-data-[scrolled]/nav:backdrop-blur-xl sm:gap-3" aria-label="Main">
+    <span class="shrink-0 transition-all duration-500 group-data-[scrolled]/nav:[&_img]:w-[132px] max-[379px]:[&_img]:w-[124px] [&_img]:transition-all [&_img]:duration-500"><BrandLogo /></span>
+    <div class="hidden items-center gap-1 md:flex">
+      <a href={gamesLink} class={item}><span data-i18n="Games">Games</span></a>
+      <a href={studioLink} class={item}><span data-i18n="Our story">Our story</span></a>
+      {game && <a href="#screens" class={item}><span data-i18n="nav.gallery">Gallery</span></a>}
+      <a href="/#contact" class={item}><span data-i18n="Contact">Contact</span></a>
+    </div>
+    <div class="flex items-center gap-2">
+      <button class="language-toggle min-h-11 min-w-16 max-[379px]:min-w-12 max-[379px]:px-3 cursor-pointer rounded-full border border-(--line)/20 bg-(--line)/[.04] px-4 text-xs text-(--ink) transition-colors hover:border-[#f59a3c]" type="button" aria-label="Switch to Bangla">বাংলা</button>
+      <button class="theme-toggle grid size-11 shrink-0 cursor-pointer place-items-center rounded-full border border-(--line)/20 bg-(--line)/[.04] text-(--ink) transition-colors hover:border-[#f59a3c] hover:text-(--accent)" type="button" aria-label="Switch to light theme" title="Switch to light theme">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" class="size-[18px] [[data-theme=light]_&]:hidden" aria-hidden="true"><circle cx="12" cy="12" r="4.2" /><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6" /></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="hidden size-[18px] [[data-theme=light]_&]:block" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7Z" /></svg>
+      </button>
+      <a href="https://www.facebook.com/kuhakstudio" target="_blank" rel="noopener noreferrer" class="hidden rounded-full bg-linear-to-r from-[#d8430c] to-[#f0913f] px-5 py-2.5 text-xs font-bold text-[#140904] shadow-[0_0_24px_-6px_#f04f06] transition-[filter] hover:brightness-110 lg:block"><span data-i18n="nav.follow">Follow the studio</span> ↗︎</a>
+      <details class="group relative md:hidden">
+        <summary class="grid size-11 cursor-pointer list-none place-items-center rounded-full border border-(--line)/20 bg-(--line)/[.04] text-lg text-(--ink) marker:hidden" aria-label="Open navigation"><span class="group-open:hidden" aria-hidden="true">☰</span><span class="hidden group-open:block" aria-hidden="true">×</span></summary>
+        <div class="absolute top-14 right-0 w-64 rounded-2xl border border-(--line)/15 bg-(--panel)/95 p-3 text-sm text-(--ink) shadow-2xl shadow-black/70 backdrop-blur-xl">
+          <a href={gamesLink} class="block rounded-xl px-4 py-3 hover:bg-(--line)/5"><span data-i18n="Games">Games</span></a><a href={studioLink} class="block rounded-xl px-4 py-3 hover:bg-(--line)/5"><span data-i18n="Our story">Our story</span></a>{game && <a href="#screens" class="block rounded-xl px-4 py-3 hover:bg-(--line)/5"><span data-i18n="nav.gallery">Gallery</span></a>}<a href="/#contact" class="block rounded-xl px-4 py-3 hover:bg-(--line)/5"><span data-i18n="Contact">Contact</span></a>
+        </div>
+      </details>
+    </div>
+  </nav>
+</header>

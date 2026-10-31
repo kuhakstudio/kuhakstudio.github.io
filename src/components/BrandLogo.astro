@@ -1,0 +1,16 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/kuhak-logo-transparent.png';
+import logoLight from '../assets/kuhak-logo-light.png';
+interface Props { size?: 'nav' | 'footer' }
+const { size = 'nav' } = Astro.props;
+const footer = size === 'footer';
+const width = ['h-auto max-w-full object-contain', footer ? 'w-[220px]' : 'w-[160px] sm:w-[208px]'];
+const sizes = footer ? '220px' : '(min-width: 640px) 208px, 160px';
+// Ivory lettering for the dark theme, ink lettering for the light theme (lazy, so dark-theme
+// visitors never download it).
+---
+<a href="/" class="inline-flex max-w-full shrink-0 items-center" aria-label="KUHAK Studio home">
+  <Image src={logo} width={800} format="webp" quality={90} alt="KUHAK Studio" class:list={[...width, 'block [[data-theme=light]_&]:hidden']} loading={footer ? 'lazy' : 'eager'} decoding="async" widths={[240, 480, 800]} sizes={sizes} />
+  <Image src={logoLight} width={800} format="webp" quality={90} alt="KUHAK Studio" class:list={[...width, 'hidden [[data-theme=light]_&]:block']} loading="lazy" decoding="async" widths={[240, 480, 800]} sizes={sizes} />
+</a>

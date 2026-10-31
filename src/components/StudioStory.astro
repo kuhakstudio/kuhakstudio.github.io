@@ -1,0 +1,38 @@
+---
+import StudioBeams from './ui/StudioBeams';
+import HoverHighlight from './ui/HoverHighlight';
+import { eyebrow, h2, ivory, ember, lead, body, muted, card, rule, band, textLink } from '../lib/theme';
+const values = [
+  { number: '01', title: 'Rooted in Bengal', copy: 'Real places, living traditions and stories close to home.', path: 'M20 4c-9-1-16 3-16 10a6 6 0 0 0 6 6c7 0 11-7 10-16ZM4 20l9-9' },
+  { number: '02', title: 'Led by imagination', copy: 'Mystery, humour, adventure. Room for every kind of story.', path: 'm12 3 2.8 6.2L21 12l-6.2 2.8L12 21l-2.8-6.2L3 12l6.2-2.8L12 3Z' },
+  { number: '03', title: 'Made to be played', copy: 'Distinctive worlds, inviting experiences, players everywhere.', path: 'm9 6 10 6-10 6V6ZM4 4v16' },
+];
+---
+<section id="studio" class={`studio-section relative isolate overflow-hidden py-16 md:py-24 ${band.mist} ${rule}`}>
+  <div class="pointer-events-none absolute inset-0 -z-10 opacity-70" aria-hidden="true"><StudioBeams client:visible /></div>
+  <div class="wrap mx-auto w-full max-w-[1320px] px-5 sm:px-8">
+    <div class="studio-layout grid gap-x-12 gap-y-8 lg:grid-cols-[1.05fr_1fr] lg:grid-rows-[auto_1fr] lg:gap-x-16 lg:gap-y-6">
+      <div class="order-1 lg:col-start-2 lg:row-start-1">
+        <p class={eyebrow} data-i18n="02 / The studio">02 / The studio</p>
+        <h2 class={h2}><span class={ivory} data-i18n="copy.folklore">Born of Folklore.</span><br><span class={ember} data-i18n="copy.built.adventure">Built for Adventure.</span></h2>
+        <p class={`mt-6 max-w-lg text-2xl leading-snug ${lead}`} data-i18n="studio.mystery">A Little Mystery. A World to Discover.</p>
+      </div>
+      <figure class="order-2 min-w-0 lg:col-start-1 lg:row-span-2 lg:row-start-1">
+        <div class={`overflow-hidden ${card}`}>
+          <div class="relative overflow-hidden"><img src="/img/studio-world.webp" alt="A winding river, wooden boat, village homes and paddy fields in Bengal at first light" width="1774" height="887" loading="lazy" decoding="async" class="aspect-[4/3] w-full object-cover object-[65%_center] transition-transform duration-700 motion-safe:hover:scale-[1.025]" /><span class="absolute right-4 bottom-4 rounded-full border border-(--line)/20 bg-[#05090b]/75 px-3 py-1 font-['Cinzel'] text-[9px] tracking-[.16em] text-[#efe1c4] backdrop-blur-sm [[lang=bn]_&]:font-sans [[lang=bn]_&]:tracking-normal" data-i18n="studio.art.label">THE WORLD THAT INSPIRES US</span></div>
+          <div class="flex items-center gap-5 border-t border-(--line)/10 bg-linear-to-r from-(--t-1)/80 to-(--card)/80 px-5 py-5 sm:px-6"><span lang="bn" class="shrink-0 font-['Atma'] text-4xl text-(--accent)">কুহক</span><div class="border-l border-(--line)/15 pl-5"><p class={`mb-1 font-['Cinzel'] text-[9px] leading-4 tracking-[.16em] uppercase ${muted} [[lang=bn]_&]:font-sans [[lang=bn]_&]:tracking-normal`} data-i18n="studio.meaning">THE MEANING OF KUHAK</p><p class={`text-base leading-6 ${lead}`} data-i18n="Illusion. Enchantment. Possibility.">Illusion. Enchantment. Possibility.</p></div></div>
+        </div>
+        <figcaption class={`mt-3 text-[10px] leading-5 ${muted}`} data-i18n="art.studio.caption">Bengal is where our worlds begin. Studio concept artwork.</figcaption>
+      </figure>
+      <div class={`studio-prose order-3 min-w-0 ${body} leading-8 lg:col-start-2 lg:row-start-2`}>
+        <p data-i18n="We are KUHAK Studio, an independent game studio from Bangladesh. Our inspiration lives in the rivers, village paths, everyday moments and extraordinary stories of Bengal.">We are KUHAK Studio, an independent game studio from Bangladesh. Our inspiration lives in the rivers, village paths, everyday moments and extraordinary stories of Bengal.</p>
+        <p class="mt-4" data-i18n="From a ghost story whispered after dark to an adventure waiting around the bend, we turn that imagination into worlds you can play. Our first game is only the beginning.">From a ghost story whispered after dark to an adventure waiting around the bend, we turn that imagination into worlds you can play. Our first game is only the beginning.</p>
+        <a href="#games" class={`mt-6 ${textLink}`}><span data-i18n="Explore our games">Explore our games</span><span aria-hidden="true">↗︎</span></a>
+      </div>
+    </div>
+    <div class="values relative isolate mt-12 grid gap-2 border-t border-(--line)/10 pt-8 md:mt-14 md:grid-cols-3">
+      <HoverHighlight client:visible />
+      {values.map(value => <div class="flex gap-4 rounded-2xl p-5"><span class="grid size-11 shrink-0 place-items-center rounded-xl border border-[#f59a3c]/30 bg-linear-to-br from-[#f04f06]/15 to-[#1c6876]/20 text-(--accent) shadow-[0_0_20px_-8px_#f04f06]"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" class="size-5" aria-hidden="true"><path d={value.path} /></svg></span><div><div class="mb-2 flex items-center gap-3"><span class={`font-['Cinzel'] text-[10px] ${muted}`}>{value.number}</span><h3 class="font-['Cinzel'] text-sm font-semibold tracking-[.04em] text-(--ink) [[lang=bn]_&]:font-sans" data-i18n={value.title}>{value.title}</h3></div><p class={`max-w-xs text-xs leading-6 ${muted}`} data-i18n={value.copy}>{value.copy}</p></div></div>)}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,16 @@
+---
+import ScreenshotGallery from './ScreenshotGallery.astro';
+import NightSky from './ui/NightSky';
+import { eyebrow, h2, ivory, body, muted, rule, band, textLink } from '../lib/theme';
+---
+<section class={`world-preview relative isolate overflow-hidden py-16 md:py-24 ${band.night} ${rule}`}>
+  <NightSky client:visible density={0.00007} className="-z-10 opacity-70 [mask-image:linear-gradient(to_bottom,black,transparent_60%)] [[data-theme=light]_&]:hidden" />
+  <div class="wrap mx-auto w-full max-w-[1320px] px-5 sm:px-8">
+    <div class="section-heading mb-10 flex flex-col justify-between gap-5 md:flex-row md:items-end">
+      <div><p class={eyebrow} data-i18n="preview.label">IN-GAME / FIRST LOOK</p><h2 data-i18n="copy.playable" class={`${h2} ${ivory}`}>Some Stories Are Meant to Be Played.</h2></div>
+      <p class={`section-aside max-w-72 ${body} ${muted}`} data-i18n="preview.copy">From moonlit paddy fields to storm-swept waterways. A first look at the world of Shakchunnir Badhon.</p>
+    </div>
+    <ScreenshotGallery />
+    <div class="mt-10 text-center"><a class={textLink} href="/shakchunnir-badhon/#screens"><span data-i18n="preview.link">Explore the game’s world</span> ↗︎</a></div>
+  </div>
+</section>
