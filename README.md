@@ -1,3 +1,3 @@
 # Kuhak Studio
 
-The website of Kuhak Studio: https://kuhakstudio.github.io
+The website of Kuhak Studio: https://kuhakstudio.com

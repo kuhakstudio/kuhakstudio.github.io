@@ -20,7 +20,7 @@ for (const file of ['index.html', 'shakchunnir-badhon/index.html', 'shakchunnir-
   for (const match of html.matchAll(/\b(?:src|href)="([^"]+)"/g)) {
     const href = match[1];
     if (/^(?:[a-z]+:|\/\/)/i.test(href)) continue;
-    const url = new URL(href, `https://kuhakstudio.github.io/${file}`);
+    const url = new URL(href, `https://kuhakstudio.com/${file}`);
     let local = path.join(dist, decodeURIComponent(url.pathname));
     if (url.pathname.endsWith('/')) local = path.join(local, 'index.html');
     await access(local).catch(() => { throw new Error(`Broken local asset/link in ${file}: ${href}`); });

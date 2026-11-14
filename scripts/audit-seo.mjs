@@ -3,7 +3,7 @@ import { readFile, access } from 'node:fs/promises';
 import path from 'node:path';
 
 const output = path.resolve('dist');
-const origin = 'https://kuhakstudio.github.io';
+const origin = 'https://kuhakstudio.com';
 const pages = [
   ['index.html', '/'],
   ['shakchunnir-badhon/index.html', '/shakchunnir-badhon/'],

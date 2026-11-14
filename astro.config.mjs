@@ -3,7 +3,7 @@ import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  site: 'https://kuhakstudio.github.io',
+  site: 'https://kuhakstudio.com',
   output: 'static',
   integrations: [react()],
   trailingSlash: 'always',
