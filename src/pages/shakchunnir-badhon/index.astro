@@ -7,10 +7,11 @@ import MovingBorder from '../../components/ui/MovingBorder';
 import TracingBeam from '../../components/ui/TracingBeam';
 import BorderGlow from '../../components/ui/BorderGlow';
 import { eyebrow, h2Small, ivory, rule, band } from '../../lib/theme';
+import { PLAY_URL } from '../../lib/utils';
 // Focus cards on the ghost grid are adapted from Aceternity UI Focus Cards.
 const glyph = 'glyph grid size-12 place-items-center rounded-xl border border-[#f59a3c]/30 bg-[#f04f06]/10 text-3xl text-(--accent) shadow-[0_0_20px_-8px_#f04f06]';
 ---
-<SiteLayout game title="Shakchunnir Badhon · KUHAK Studio" description="Shakchunnir Badhon is a Bengali folk-horror endless runner from KUHAK Studio. Explore its ghosts, gameplay and village world. Coming soon to Android." image="/img/social/shakchunnir-badhon.jpg">
+<SiteLayout game title="Shakchunnir Badhon · KUHAK Studio" description="Shakchunnir Badhon is a Bengali folk-horror endless runner from KUHAK Studio. Explore its ghosts, gameplay and village world. Free on Google Play for Android." image="/img/social/shakchunnir-badhon.jpg">
 <GameHero />
 
 <main id="main">
@@ -20,7 +21,7 @@ const glyph = 'glyph grid size-12 place-items-center rounded-xl border border-[#
       <p class="mx-auto mb-5 max-w-[720px] lead font-['Cormorant_Garamond'] text-2xl leading-snug font-medium text-(--lead) italic md:text-[1.75rem] [[lang=bn]_&]:font-sans [[lang=bn]_&]:text-xl [[lang=bn]_&]:not-italic" data-i18n="game.51">Run from Shakchunni through a haunted Bengal
       village. Dodge the ghosts of our folk tales, keep your lantern lit, and don't let her catch you.</p>
       <ul class="justify-center pills my-5 flex flex-wrap gap-2 [&>li]:rounded-full [&>li]:border [&>li]:border-(--line)/15 [&>li]:bg-(--line)/[.04] [&>li]:px-4 [&>li]:py-1 [&>li]:text-[11px] [&>li]:text-(--ink-2)"><li data-i18n="game.52">Android</li><li data-i18n="game.53">Free, with ads</li><li data-i18n="game.54">Bangla &amp; English</li><li data-i18n="game.55">For ages 13+</li></ul>
-      <div class="justify-center actions mt-5 flex flex-wrap gap-3"><span class="soon relative inline-flex overflow-hidden rounded-full p-px"><MovingBorder client:visible /><span class="relative z-10 inline-flex items-center rounded-full border border-[#f59a3c]/25 bg-[#0d0805]/95 px-6 py-2.5 text-xs text-[#f5c48a]" data-i18n="game.56">Coming soon to Google Play</span></span></div>
+      <div class="justify-center actions mt-5 flex flex-wrap gap-3"><a href={PLAY_URL} target="_blank" rel="noopener noreferrer" class="soon relative inline-flex overflow-hidden rounded-full p-px"><MovingBorder client:visible /><span class="relative z-10 inline-flex items-center gap-3 rounded-full border border-[#f59a3c]/25 bg-[#0d0805]/95 px-6 py-2.5 text-xs font-bold text-[#f5c48a]"><span data-i18n="game.56">Get it free on Google Play</span><span class="text-base text-[#f59a3c]" aria-hidden="true">↗︎</span></span></a></div>
     </div>
   </section>
 
@@ -130,12 +131,12 @@ const glyph = 'glyph grid size-12 place-items-center rounded-xl border border-[#
       <p class={eyebrow} data-i18n="game.109">Questions</p>
       <h2 data-i18n="game.110" class={`${h2Small} mb-5 ${ivory}`}>FAQ</h2>
       <div class="faq max-w-4xl [&_details]:border-b [&_details]:border-(--line)/10 [&_details]:px-4 [&_details]:py-6 [&_details[open]]:rounded-xl [&_details[open]]:bg-[#f04f06]/[.07] [&_summary]:flex [&_summary]:cursor-pointer [&_summary]:list-none [&_summary]:items-center [&_summary]:justify-between [&_summary]:gap-5 [&_summary]:text-sm [&_summary]:font-bold [&_summary]:after:text-xl [&_summary]:after:text-(--accent) [&_summary]:after:content-['+'] [&_details[open]_summary]:after:content-['−'] [&_p]:mt-4 [&_p]:text-sm [&_p]:leading-7 [&_p]:text-(--ink-3) [&_a]:text-(--accent) [&_a]:underline">
-        <details><summary data-i18n="game.111">Is it free?</summary><p data-i18n="game.112">Yes. The game is free and shows ads. Ads that give you a reward (to keep running after you are caught, or towards a jharu) are always your choice.</p></details>
-        <details><summary data-i18n="game.113">When and where can I play it?</summary><p data-i18n="game.114">It is coming soon to Google Play for Android phones.</p></details>
+        <details><summary data-i18n="game.111">Is it free?</summary><p data-i18n="game.112">Yes. The game is free and shows ads. Ads that give you a reward (to keep running after you are caught, or for a jharu) are always your choice.</p></details>
+        <details><summary data-i18n="game.113">When and where can I play it?</summary><p data-i18n="game.114">It is out now on <a href="https://play.google.com/store/apps/details?id=com.kuhakstudio.shakchunnirbadhon" target="_blank" rel="noopener noreferrer">Google Play</a> for Android phones, free.</p></details>
         <details><summary data-i18n="game.115">Which languages?</summary><p data-i18n="game.116">Bangla and English, switchable in the settings. The ghosts speak in a village dialect, with subtitles.</p></details>
         <details><summary data-i18n="game.117">Is it very scary?</summary><p data-i18n="game.118">It is comic horror: spooky, dark and full of ghosts, but played for laughs. No gore. It is meant for players aged 13 and up.</p></details>
         <details><summary data-i18n="game.119">Will it run on my phone?</summary><p data-i18n="game.120">It is built for budget Android phones too. The graphics setting picks the right level automatically, and you can change it yourself.</p></details>
-        <details><summary data-i18n="game.121">What data does the game collect?</summary><p data-i18n="game.122">The game keeps your progress on your phone only. Ads are served by Google AdMob, which collects some device data. See the <a href="/shakchunnir-badhon/privacy.html">privacy policy</a>.</p></details>
+        <details><summary data-i18n="game.121">What data does the game collect?</summary><p data-i18n="game.122">The game keeps your progress on your phone, and in your Google Play Games account if you sign in. Ads are served by Google AdMob, which collects some device data. See the <a href="/shakchunnir-badhon/privacy.html">privacy policy</a>.</p></details>
       </div>
     </div>
   </section>

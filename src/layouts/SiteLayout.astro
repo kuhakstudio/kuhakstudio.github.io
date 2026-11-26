@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { PLAY_URL } from '../lib/utils';
 import '@fontsource/atma/700.css';
 import '@fontsource/cinzel/500.css';
 import '@fontsource/cinzel/600.css';
@@ -50,7 +51,8 @@ if (game) graph.push({
   operatingSystem: 'Android', gamePlatform: 'Android',
   genre: ['Bengali folk horror', 'Endless runner'], inLanguage: ['en', 'bn'],
   publisher: { '@id': organizationId },
-  sameAs: ['https://www.facebook.com/shakchunnirbadhon/'],
+  installUrl: PLAY_URL,
+  sameAs: [PLAY_URL, 'https://www.facebook.com/shakchunnirbadhon/'],
 });
 const jsonLd = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }).replace(/</g, '\\u003c');
 ---
