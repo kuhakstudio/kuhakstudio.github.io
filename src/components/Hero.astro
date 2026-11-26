@@ -4,6 +4,7 @@ import Spotlight from './ui/Spotlight';
 import BorderGlow from './ui/BorderGlow';
 import TiltCard from './ui/TiltCard';
 import Marquee from './ui/Marquee';
+import { PLAY_URL } from '../lib/utils';
 const strip = [['bold.strip1', 'BENGALI ROOTS'], ['bold.strip2', 'BOUNDLESS WORLDS'], ['bold.strip3', 'BUILT TO PLAY'], ['bold.strip4', 'KUHAK STUDIO']];
 const lift = 'transition-transform duration-200 ease-linear';
 ---
@@ -31,13 +32,14 @@ const lift = 'transition-transform duration-200 ease-linear';
       </div>
     </div>
     <div class="[perspective:1000px]">
-      <a class="hero-game relative mx-auto block w-[calc(100%-16px)] max-w-[440px] rounded-2xl border border-(--line)/15 bg-(--card)/85 shadow-[0_30px_80px_-20px_rgba(0,0,0,.9),0_0_60px_-20px_rgba(240,79,6,.35)] transition-transform duration-200 ease-linear [transform-style:preserve-3d]" href="/shakchunnir-badhon/" aria-label="Discover Shakchunnir Badhon">
+      <!-- (a card, not one big link: the art and title open the game page, the button opens Google Play) -->
+      <div class="hero-game relative mx-auto block w-[calc(100%-16px)] max-w-[440px] rounded-2xl border border-(--line)/15 bg-(--card)/85 shadow-[0_30px_80px_-20px_rgba(0,0,0,.9),0_0_60px_-20px_rgba(240,79,6,.35)] transition-transform duration-200 ease-linear [transform-style:preserve-3d]">
         <TiltCard client:visible />
-        <span data-tilt-z="20" class={`flex h-11 items-center justify-between rounded-t-2xl border-b border-(--line)/10 bg-(--card-2) px-5 font-['Cinzel'] text-[10px] font-semibold tracking-[.2em] text-(--ink-2) ${lift} [[lang=bn]_&]:font-sans [[lang=bn]_&]:tracking-normal`}><span data-i18n="bold.featured">IN THE SPOTLIGHT</span><span class="text-xl text-(--accent)" aria-hidden="true">↗︎</span></span>
-        <img data-tilt-z="50" decoding="async" class={`h-[270px] w-full object-cover object-[60%_center] md:h-[360px] lg:h-[400px] ${lift}`} src="/img/shakchunnir-badhon-hero.webp" alt="Shakchunnir Badhon promotional artwork featuring Kalu and Shakchunni" srcset="/img/shakchunnir-badhon-hero-mobile.webp 1024w, /img/shakchunnir-badhon-hero.webp 1774w" sizes="(min-width: 768px) 440px, calc(100vw - 56px)" width="1774" height="887" />
-        <span data-tilt-z="35" class={`block rounded-b-2xl bg-linear-to-b from-(--card-2) to-(--card) px-5 py-5 ${lift}`}><span class="font-['Atma'] text-3xl leading-relaxed text-(--ink)" lang="bn">শাঁকচুন্নির বাঁধন</span><span class="mt-2 flex items-center justify-between text-[10px] text-(--ink-3)"><span data-i18n="Out now · Google Play">Out now · Google Play</span><span class="size-1.5 rounded-full bg-[#f59a3c] shadow-[0_0_10px_#f59a3c]"></span></span></span>
-        <span data-tilt-z="80" class={`absolute right-0 bottom-24 flex rotate-[-9deg] items-center gap-4 bg-linear-to-r from-[#e2560f] to-[#f59a3c] px-4 py-3 text-[10px] leading-tight font-black text-[#1a0a03] shadow-xl md:-right-5 ${lift}`}><span data-i18n="bold.first">OUR FIRST<br>ORIGINAL</span><span class="text-3xl" aria-hidden="true">✳︎</span></span>
-      </a>
+        <a href="/shakchunnir-badhon/" data-tilt-z="20" class={`flex h-11 items-center justify-between rounded-t-2xl border-b border-(--line)/10 bg-(--card-2) px-5 font-['Cinzel'] text-[10px] font-semibold tracking-[.2em] text-(--ink-2) ${lift} [[lang=bn]_&]:font-sans [[lang=bn]_&]:tracking-normal`}><span data-i18n="bold.featured">IN THE SPOTLIGHT</span><span class="text-xl text-(--accent)" aria-hidden="true">↗︎</span></a>
+        <a href="/shakchunnir-badhon/" data-tilt-z="50" class={`block ${lift}`} aria-label="Discover Shakchunnir Badhon"><img decoding="async" class="h-[270px] w-full object-cover object-right md:h-[340px]" src="/img/shakchunnir-badhon-hero.webp" alt="Shakchunnir Badhon promotional artwork featuring Kalu and Shakchunni" srcset="/img/shakchunnir-badhon-hero-mobile.webp 1024w, /img/shakchunnir-badhon-hero.webp 1774w" sizes="(min-width: 768px) 440px, calc(100vw - 56px)" width="1774" height="887" /></a>
+        <div data-tilt-z="35" class={`block rounded-b-2xl bg-linear-to-b from-(--card-2) to-(--card) px-5 py-5 ${lift}`}><a href="/shakchunnir-badhon/" class="block font-['Atma'] text-3xl leading-relaxed text-(--ink)" lang="bn">শাঁকচুন্নির বাঁধন</a><div class="mt-3 flex flex-wrap items-center justify-between gap-3"><a href={PLAY_URL} target="_blank" rel="noopener noreferrer" class="inline-flex min-h-11 items-center gap-3 rounded-full bg-linear-to-r from-[#d8430c] to-[#f0913f] px-5 text-xs font-bold text-[#1a0a03] shadow-[0_0_24px_-6px_rgba(240,79,6,.7)] transition-[filter] hover:brightness-110"><span data-i18n="game.play">Get it on Google Play</span><span class="text-base" aria-hidden="true">↗︎</span></a><span class="flex items-center gap-2 text-[10px] text-(--ink-3)"><span data-i18n="Out now">Out now</span><span class="size-1.5 rounded-full bg-[#f59a3c] shadow-[0_0_10px_#f59a3c]"></span></span></div></div>
+        <span data-tilt-z="80" class={`pointer-events-none absolute right-0 bottom-[78px] flex rotate-[-9deg] items-center gap-4 bg-linear-to-r from-[#e2560f] to-[#f59a3c] px-4 py-3 text-[10px] leading-tight font-black text-[#1a0a03] shadow-xl md:-right-5 ${lift}`}><span data-i18n="bold.first">OUR FIRST<br>ORIGINAL</span><span class="text-3xl" aria-hidden="true">✳︎</span></span>
+      </div>
     </div>
   </div>
 </header>
