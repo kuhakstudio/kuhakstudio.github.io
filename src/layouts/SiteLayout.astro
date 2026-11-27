@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import { PLAY_URL } from '../lib/utils';
+import { VIDEOS, YOUTUBE_CHANNEL } from '../lib/videos';
 import '@fontsource/atma/700.css';
 import '@fontsource/cinzel/500.css';
 import '@fontsource/cinzel/600.css';
@@ -32,7 +33,7 @@ const graph: Record<string, unknown>[] = [
     '@type': 'Organization', '@id': organizationId, name: 'KUHAK Studio',
     url: site.href, logo: new URL('/img/kuhak-studio-logo.png', site).href,
     description: 'An independent game studio from Bangladesh creating games inspired by Bengali culture, folklore and imagination.',
-    email: 'contact@kuhakstudio.com', sameAs: ['https://www.facebook.com/kuhakstudio'],
+    email: 'contact@kuhakstudio.com', sameAs: ['https://www.facebook.com/kuhakstudio', YOUTUBE_CHANNEL],
   },
   {
     '@type': 'WebSite', '@id': websiteId, name: 'KUHAK Studio', url: site.href,
@@ -53,6 +54,14 @@ if (game) graph.push({
   publisher: { '@id': organizationId },
   installUrl: PLAY_URL,
   sameAs: [PLAY_URL, 'https://www.facebook.com/shakchunnirbadhon/'],
+  trailer: { '@id': canonical.href + '#video-trailer' },
+});
+if (game) for (const video of VIDEOS) graph.push({
+  '@type': 'VideoObject', '@id': canonical.href + '#video-' + video.key,
+  name: video.name, description: video.description,
+  thumbnailUrl: new URL(video.poster, site).href, uploadDate: video.uploadDate, duration: video.duration,
+  embedUrl: `https://www.youtube.com/embed/${video.id}`, url: `https://www.youtube.com/watch?v=${video.id}`,
+  publisher: { '@id': organizationId },
 });
 const jsonLd = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }).replace(/</g, '\\u003c');
 ---

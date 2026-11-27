@@ -1,6 +1,11 @@
 ---
 // Focus cards (adapted from Aceternity UI Focus Cards): hovering one screenshot softly blurs the rest.
-const screenshots = [
+// videos: the trailer and gameplay lead the row (the home page's first look); only: these screenshots, in order.
+import { VIDEOS } from '../lib/videos';
+import VideoPoster from './VideoPoster.astro';
+interface Props { videos?: boolean; only?: string[] }
+const { videos = false, only } = Astro.props;
+const all = [
   { file: 'start', alt: 'Shakchunnir Badhon start screen with its Bengali title and village night setting', caption: 'The start screen', key: 'game.96' },
   { file: 'chase', alt: 'Shakchunni chasing Kalu on the mud road', caption: 'The chase', key: 'game.97' },
   { file: 'khal', alt: 'Kalu on a banana raft crossing the khal', caption: 'Crossing the khal', key: 'game.98' },
@@ -8,8 +13,15 @@ const screenshots = [
   { file: 'storm', alt: 'A Kalboishakhi storm on the village road', caption: 'Kalboishakhi', key: 'game.100' },
   { file: 'blood', alt: 'The blood moon turns the night red', caption: 'Blood moon', key: 'game.101' },
 ];
+const screenshots = only ? only.map(file => all.find(shot => shot.file === file)!) : all;
 ---
 <div class="shots flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 md:grid md:grid-cols-3 xl:grid-cols-6 md:gap-5 md:overflow-visible [&>figure]:min-w-0 [&>figure]:flex-[0_0_57%] [&>figure]:snap-start [&>figure]:transition-all [&>figure]:duration-300 [&>figure]:ease-out pointer-fine:[&:has(>figure:hover)>figure:not(:hover)]:scale-[.97] pointer-fine:[&:has(>figure:hover)>figure:not(:hover)]:opacity-55 pointer-fine:[&:has(>figure:hover)>figure:not(:hover)]:blur-[2px] [&_figcaption]:mt-3 [&_figcaption]:text-center [&_figcaption]:font-['Cinzel'] [&_figcaption]:text-[10px] [&_figcaption]:tracking-[.12em] [&_figcaption]:text-(--ink-3) [[lang=bn]_&_figcaption]:font-sans [[lang=bn]_&_figcaption]:tracking-normal">
+  {videos && VIDEOS.map(video => (
+    <figure>
+      <VideoPoster video={video} small class="rounded-lg border border-(--line)/15 shadow-[0_20px_50px_-25px_rgba(0,0,0,.9)]" />
+      <figcaption data-i18n={`video.${video.key}`}>{video.label}</figcaption>
+    </figure>
+  ))}
   {screenshots.map(shot => (
     <figure>
       <a class="screenshot-open group relative block cursor-zoom-in overflow-hidden rounded-lg [&>img]:aspect-[9/16] [&>img]:w-full [&>img]:rounded-lg [&>img]:border [&>img]:border-(--line)/15 [&>img]:shadow-[0_20px_50px_-25px_rgba(0,0,0,.9)] [&>img]:object-cover [&>img]:transition-all [&>img]:duration-500 motion-safe:[&:hover>img]:scale-105 [&:hover>img]:brightness-110" href={`/img/shot-${shot.file}.jpg`}>

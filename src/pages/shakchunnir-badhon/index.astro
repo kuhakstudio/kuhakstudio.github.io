@@ -1,6 +1,7 @@
 ---
 import GameHero from '../../components/GameHero.astro';
 import ScreenshotGallery from '../../components/ScreenshotGallery.astro';
+import VideoShowcase from '../../components/VideoShowcase.astro';
 import SiteLayout from '../../layouts/SiteLayout.astro';
 import GlowingEffect from '../../components/ui/GlowingEffect';
 import MovingBorder from '../../components/ui/MovingBorder';
@@ -24,6 +25,8 @@ const glyph = 'glyph grid size-12 place-items-center rounded-xl border border-[#
       <div class="justify-center actions mt-5 flex flex-wrap gap-3"><a href={PLAY_URL} target="_blank" rel="noopener noreferrer" class="soon relative inline-flex overflow-hidden rounded-full p-px"><MovingBorder client:visible /><span class="relative z-10 inline-flex items-center gap-3 rounded-full border border-[#f59a3c]/25 bg-[#0d0805]/95 px-6 py-2.5 text-xs font-bold text-[#f5c48a]"><span data-i18n="game.56">Get it free on Google Play</span><span class="text-base text-[#f59a3c]" aria-hidden="true">↗︎</span></span></a></div>
     </div>
   </section>
+
+  <VideoShowcase />
 
   <section id="story" class={`relative isolate py-16 md:py-24 ${band.night} ${rule}`}>
     <div class="wrap split mx-auto w-full max-w-[1320px] px-5 sm:px-8 grid items-center gap-8 md:grid-cols-2 md:gap-16 [&>img]:max-h-[580px] [&>img]:w-full [&>img]:rounded-lg [&>img]:object-cover">

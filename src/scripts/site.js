@@ -27,7 +27,7 @@ import dictionary from "../data/translations.json";
 (() => {
   const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
   if (preference.matches || !('IntersectionObserver' in window)) return;
-  const targets = [...document.querySelectorAll('.section-heading, .game-showcase, .future-note, .studio-layout > div, .values > div, .contact-section .wrap, .game-page .card, .ghost, .shots figure, .faq')];
+  const targets = [...document.querySelectorAll('.section-heading, .game-showcase, .future-note, .studio-layout > div, .values > div, .contact-section .wrap, .game-page .card, .ghost, .shots figure, .videos figure, .faq')];
   const running = new Set();
   const observer = new IntersectionObserver(entries => {
     for (const entry of entries) {
@@ -35,7 +35,7 @@ import dictionary from "../data/translations.json";
       const element = entry.target;
       observer.unobserve(element);
       const index = [...element.parentElement.children].indexOf(element);
-      const stagger = element.matches('.card, .ghost, .shots figure, .values > div');
+      const stagger = element.matches('.card, .ghost, .shots figure, .videos figure, .values > div');
       const animation = animate(element, { opacity: [0, 1], y: [22, 0] }, { duration: .65, delay: stagger ? (index % 3) * .07 : 0, ease: [0.22, 1, 0.36, 1] });
       running.add(animation);
       animation.then(() => running.delete(animation));
@@ -116,6 +116,56 @@ import dictionary from "../data/translations.json";
     if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) display(index + (dx < 0 ? 1 : -1));
     touchStart = null;
   }, { passive: true });
+})();
+
+// YouTube videos in a native modal: the privacy-enhanced embed is created only on a tap and removed on close
+// (which stops it). Without JS the posters are plain links to YouTube.
+(() => {
+  const links = [...document.querySelectorAll('.video-open')];
+  if (!links.length || typeof HTMLDialogElement === 'undefined') return;
+  const dialog = document.createElement('dialog');
+  dialog.className = 'video-viewer fixed inset-0 m-0 h-dvh max-h-none w-full max-w-none border-0 bg-transparent p-3 text-[#efe8da] backdrop:bg-[#05090b]/95 md:p-8';
+  dialog.innerHTML = `<div class="viewer-panel mx-auto flex h-full w-full max-w-[560px] flex-col overflow-hidden rounded-xl border border-[#fceed2]/15 bg-[#0a1416]"><div class="flex shrink-0 items-center gap-3 border-b border-[#fceed2]/10 p-3 text-xs"><span class="video-caption mr-auto min-w-0 truncate text-sm" id="video-caption"></span><a class="video-original shrink-0 text-xs text-[#f59a3c]" target="_blank" rel="noopener noreferrer"></a><button class="video-close grid min-h-11 min-w-11 cursor-pointer place-items-center rounded-full border border-[#fceed2]/15 bg-[#0d1a1d] text-3xl text-[#efe8da] hover:bg-[#f04f06]/30" type="button">×</button></div><div class="video-stage flex min-h-0 flex-1 items-center justify-center bg-black p-0"></div></div>`;
+  dialog.setAttribute('aria-labelledby', 'video-caption');
+  document.body.append(dialog);
+  const stage = dialog.querySelector('.video-stage');
+  const close = dialog.querySelector('.video-close');
+  const original = dialog.querySelector('.video-original');
+  let trigger;
+  let wasScrollLocked;
+  links.forEach(link => link.addEventListener('click', event => {
+    if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    trigger = link;
+    const bangla = document.documentElement.lang === 'bn';
+    const title = link.closest('figure').querySelector('figcaption').textContent;
+    const frame = document.createElement('iframe');
+    frame.className = 'aspect-[9/16] h-full max-h-full w-auto max-w-full border-0';
+    frame.src = `https://www.youtube-nocookie.com/embed/${link.dataset.video}?autoplay=1&playsinline=1&rel=0`;
+    frame.title = title;
+    frame.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+    frame.allowFullscreen = true;
+    frame.referrerPolicy = 'strict-origin-when-cross-origin';
+    stage.replaceChildren(frame);
+    dialog.querySelector('.video-caption').textContent = title;
+    original.href = link.href;
+    original.textContent = bangla ? 'ইউটিউবে দেখুন ↗︎' : 'Watch on YouTube ↗︎';
+    close.setAttribute('aria-label', bangla ? 'বন্ধ করুন' : 'Close video');
+    wasScrollLocked = document.body.classList.contains('overflow-hidden');
+    dialog.showModal();
+    document.body.classList.add('overflow-hidden');
+    close.focus();
+  }));
+  function restorePage() {
+    stage.replaceChildren();
+    if (!wasScrollLocked) document.body.classList.remove('overflow-hidden');
+    trigger?.focus({ preventScroll: true });
+  }
+  function closeViewer() { dialog.close(); }
+  close.addEventListener('click', closeViewer);
+  dialog.addEventListener('cancel', event => { event.preventDefault(); closeViewer(); });
+  dialog.addEventListener('click', event => { if (event.target === dialog) closeViewer(); });
+  dialog.addEventListener('close', restorePage);
 })();
 
 for (const menu of document.querySelectorAll('header details')) {
